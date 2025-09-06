@@ -1,0 +1,1085 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/21/2025 2:59:46 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HUSSIEN"
+  DTS:CreatorName="HUSSIEN\hm489"
+  DTS:DTSID="{0BB1653E-2FB0-47A1-B9AB-D1A211DFC8D6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Address"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{18FA097F-4CD4-46C8-96A9-1A1C14102DBC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Address Dimension"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EB3FBF55-92FE-4679-9152-2054C8E0A28A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Address Dimension"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Address Dimension\Adderess, Country, Status BKs"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Adderess, Country, Status BKs"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[adress_dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[adress_dim]) [refTable]
+where [refTable].[Adress_Bk] = ? and [refTable].[count_Bk] = ? and [refTable].[status_Bk] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Adress_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Adress_Bk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="street_no" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="street_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="city" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="count_Bk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="countryname" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="status_Bk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="status" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[address_bk]};#{Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_bk]};#{Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status_bk]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Address Dimension\Adderess, Country, Status BKs.Connections[OleDbConnection]"
+                  connectionManagerID="{F977A13C-C88D-43A4-8219-9534411D3F31}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.data_warehouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Address Dimension\Adderess, Country, Status BKs.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Address Dimension\Adderess, Country, Status BKs.Inputs[Lookup Input].Columns[country_bk]"
+                      cachedDataType="i4"
+                      cachedName="country_bk"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_bk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">count_Bk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Address Dimension\Adderess, Country, Status BKs.Inputs[Lookup Input].Columns[status_bk]"
+                      cachedDataType="i4"
+                      cachedName="status_bk"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status_bk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">status_Bk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Address Dimension\Adderess, Country, Status BKs.Inputs[Lookup Input].Columns[address_bk]"
+                      cachedDataType="i4"
+                      cachedName="address_bk"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[address_bk]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Adress_Bk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Address Dimension\Adderess, Country, Status BKs.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Address Dimension\Adderess, Country, Status BKs.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Address Dimension\Adderess, Country, Status BKs.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Address Dimension\Adderess, Country, Status BKs.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Address Dimension\Adderess, Country, Status BKs.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Address Dimension\Adderess, Country, Status BKs.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Address Dimension\Adderess, Country, Status BKs.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Adderess, Country, Status BKs.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Adderess, Country, Status BKs.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Adderess, Country, Status BKs.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Address Dimension\Address Dimension Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Address Dimension Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[adress_dim]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Address Dimension\Address Dimension Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{F977A13C-C88D-43A4-8219-9534411D3F31}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.data_warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].Columns[status_bk]"
+                      cachedDataType="i4"
+                      cachedName="status_bk"
+                      externalMetadataColumnId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[status_Bk]"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status_bk]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].Columns[address_bk]"
+                      cachedDataType="i4"
+                      cachedName="address_bk"
+                      externalMetadataColumnId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[Adress_Bk]"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[address_bk]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].Columns[Copy of street_name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Copy of street_name"
+                      externalMetadataColumnId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[street_name]"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of street_name]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].Columns[Copy of city]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Copy of city"
+                      externalMetadataColumnId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of city]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].Columns[country_bk]"
+                      cachedDataType="i4"
+                      cachedName="country_bk"
+                      externalMetadataColumnId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[count_Bk]"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_bk]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].Columns[Copy of country_name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="Copy of country_name"
+                      externalMetadataColumnId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[countryname]"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of country_name]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].Columns[Copy of status]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Copy of status"
+                      externalMetadataColumnId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of status]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].Columns[Copy of street_no]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Copy of street_no"
+                      externalMetadataColumnId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[street_no]"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of street_no]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[Adress_sk]"
+                      dataType="i4"
+                      name="Adress_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[Adress_Bk]"
+                      dataType="i4"
+                      name="Adress_Bk" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[street_no]"
+                      dataType="wstr"
+                      length="20"
+                      name="street_no" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[street_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="street_name" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[count_Bk]"
+                      dataType="i4"
+                      name="count_Bk" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[countryname]"
+                      dataType="wstr"
+                      length="50"
+                      name="countryname" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[status_Bk]"
+                      dataType="i4"
+                      name="status_Bk" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="50"
+                      name="status" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Address Dimension\Address Dimension Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Address Dimension Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Address Dimension Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Address Dimension Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Customer_Address, Address, Country, Add_Status JOINS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    a.address_id          AS address_bk,
+    a.street_number       AS street_no,
+    a.street_name,
+    a.city,
+    c.country_id          AS country_bk,
+    c.country_name,
+    ca.status_id          AS status_bk,
+    s.address_status      AS status
+FROM customer_address ca
+JOIN address a 
+    ON ca.address_id = a.address_id
+JOIN country c 
+    ON a.country_id = c.country_id
+JOIN address_status s 
+    ON ca.status_id = s.status_id;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Connections[OleDbConnection]"
+                  connectionManagerID="{515C676F-300D-429D-9511-E7EE98B9A056}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gravity_books]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[street_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[street_name]"
+                      length="200"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[street_name]"
+                      name="street_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[country_name]"
+                      length="200"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_name]"
+                      name="country_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[address_bk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[address_bk]"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[address_bk]"
+                      name="address_bk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[street_no]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[street_no]"
+                      length="10"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[street_no]"
+                      name="street_no"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="100"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_bk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[country_bk]"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_bk]"
+                      name="country_bk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status_bk]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[status_bk]"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status_bk]"
+                      name="status_bk"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      length="30"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status]"
+                      name="status"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[street_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="street_name" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[country_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="country_name" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[address_bk]"
+                      dataType="i4"
+                      name="address_bk" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[street_no]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="street_no" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[country_bk]"
+                      dataType="i4"
+                      name="country_bk" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[status_bk]"
+                      dataType="i4"
+                      name="status_bk" />
+                    <externalMetadataColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="status" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[address_bk]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[address_bk]"
+                      name="address_bk" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[street_no]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[street_no]"
+                      name="street_no" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[street_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[street_name]"
+                      name="street_name" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[country_bk]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[country_bk]"
+                      name="country_bk" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[country_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[country_name]"
+                      name="country_name" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[status_bk]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[status_bk]"
+                      name="status_bk" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="st, st_country, city, stat, stat_no Conversions"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input].Columns[street_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="street_name"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[street_name]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input].Columns[country_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="country_name"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_name]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input].Columns[city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="city"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input].Columns[status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="status"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input].Columns[street_no]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="street_no"
+                      lineageId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[street_no]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of street_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of street_name]"
+                      name="Copy of street_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[street_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of country_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="200"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of country_name]"
+                      name="Copy of country_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[country_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of city]"
+                      name="Copy of city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[city]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of status]"
+                      name="Copy of status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[status]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of street_no]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output].Columns[Copy of street_no]"
+                      name="Copy of street_no"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output].Columns[street_no]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Address Dimension.Paths[Data Conversion Output]"
+              endId="Package\Address Dimension\Adderess, Country, Status BKs.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Address Dimension.Paths[Lookup No Match Output]"
+              endId="Package\Address Dimension\Address Dimension Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Address Dimension\Adderess, Country, Status BKs.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Address Dimension.Paths[OLE DB Source Output]"
+              endId="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Address Dimension"
+          TopLeft="125.833326458103,60.6666662447983" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Address Dimension">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="346.4,41.6"
+          Id="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS"
+          TopLeft="135.833325911728,68.466666190558" />
+        <NodeLayout
+          Size="284,41.6"
+          Id="Package\Address Dimension\st, st_country, city, stat, stat_no Conversions"
+          TopLeft="204.999988799294,165.466665738556" />
+        <NodeLayout
+          Size="223.2,41.6"
+          Id="Package\Address Dimension\Address Dimension Destination"
+          TopLeft="524.166638027464,291.399998101592" />
+        <NodeLayout
+          Size="221.6,41.6"
+          Id="Package\Address Dimension\Adderess, Country, Status BKs"
+          TopLeft="269.999985247851,278.199998065432" />
+        <EdgeLayout
+          Id="Package\Address Dimension.Paths[OLE DB Source Output]"
+          TopLeft="309.033325911728,110.066666190558">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37.966662887566,55.399999547998"
+              Start="0,0"
+              End="37.966662887566,47.899999547998">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.699999773999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.699999773999"
+                    Point2="0,27.699999773999"
+                    Point3="4,27.699999773999" />
+                  <mssgle:LineSegment
+                    End="33.966662887566,27.699999773999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.966662887566,27.699999773999"
+                    Point2="37.966662887566,27.699999773999"
+                    Point3="37.966662887566,31.699999773999" />
+                  <mssgle:LineSegment
+                    End="37.966662887566,47.899999547998" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Address Dimension.Paths[Lookup No Match Output]"
+          TopLeft="491.599985247851,298.999998065432">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.566652779613,13.20000003616"
+              Start="0,0"
+              End="25.066652779613,13.20000003616">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="12.2833263898065,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.2833263898065,0"
+                    Point2="16.2833263898065,0"
+                    Point3="16.2833263898065,4" />
+                  <mssgle:LineSegment
+                    End="16.2833263898065,9.20000003616002" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.2833263898065,9.20000003616002"
+                    Point2="16.2833263898065,13.20000003616"
+                    Point3="20.2833263898065,13.20000003616" />
+                  <mssgle:LineSegment
+                    End="25.066652779613,13.20000003616" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-39.5230603289435,-17.609375,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Address Dimension.Paths[Data Conversion Output]"
+          TopLeft="346.999988799294,207.066665738556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.799996448557,71.133332326876"
+              Start="0,0"
+              End="33.799996448557,63.633332326876">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.566666163438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.566666163438"
+                    Point2="0,35.566666163438"
+                    Point3="4,35.566666163438" />
+                  <mssgle:LineSegment
+                    End="29.799996448557,35.566666163438" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29.799996448557,35.566666163438"
+                    Point2="33.799996448557,35.566666163438"
+                    Point3="33.799996448557,39.566666163438" />
+                  <mssgle:LineSegment
+                    End="33.799996448557,63.633332326876" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Address Dimension\Customer_Address, Address, Country, Add_Status JOINS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Address Dimension\Address Dimension Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Address Dimension\Adderess, Country, Status BKs">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[adress_dim]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

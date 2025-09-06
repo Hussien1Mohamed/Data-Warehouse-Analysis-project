@@ -1,0 +1,1097 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/19/2025 11:56:56 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HUSSIEN"
+  DTS:CreatorName="HUSSIEN\hm489"
+  DTS:DTSID="{5781C900-6CEE-41E3-8AD9-69D0C6E8C0AF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Book"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{6E06626E-4F98-46D8-A3A0-7B6CC1C4EC74}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B23E2551-F00C-4661-93F2-C11CC92201D1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Book dimension destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Book dimension destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Book]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Book dimension destination.Connections[OleDbConnection]"
+                  connectionManagerID="{F977A13C-C88D-43A4-8219-9534411D3F31}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.data_warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[publisher_id]"
+                      cachedDataType="i4"
+                      cachedName="publisher_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[publisher_id]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[publisher_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[language_id]"
+                      cachedDataType="i4"
+                      cachedName="language_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[language_id_Bk]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[NumPages]"
+                      cachedDataType="i4"
+                      cachedName="NumPages"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[NoPages]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[NumPages]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[PublicationDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PublicationDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[publication_date]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[PublicationDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[Publisher]"
+                      cachedDataType="wstr"
+                      cachedLength="1000"
+                      cachedName="Publisher"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[Publisher_name]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Publisher]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[Copy of Title]"
+                      cachedDataType="wstr"
+                      cachedLength="400"
+                      cachedName="Copy of Title"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of Title]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[Copy of Language]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Copy of Language"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[language_name]"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of Language]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[Copy of language_code]"
+                      cachedDataType="wstr"
+                      cachedLength="8"
+                      cachedName="Copy of language_code"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[language_code]"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of language_code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[Copy of ISBN]"
+                      cachedDataType="wstr"
+                      cachedLength="13"
+                      cachedName="Copy of ISBN"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[ISBN13]"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of ISBN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].Columns[BookKey]"
+                      cachedDataType="i4"
+                      cachedName="BookKey"
+                      externalMetadataColumnId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[Book_id_Bk]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[BookKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[Book_id_sk]"
+                      dataType="i4"
+                      name="Book_id_sk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[Book_id_Bk]"
+                      dataType="i4"
+                      name="Book_id_Bk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="50"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[ISBN13]"
+                      dataType="wstr"
+                      length="50"
+                      name="ISBN13" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[language_id_Bk]"
+                      dataType="i4"
+                      name="language_id_Bk" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[language_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="language_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[language_code]"
+                      dataType="wstr"
+                      length="20"
+                      name="language_code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[publication_date]"
+                      dataType="dbTimeStamp"
+                      name="publication_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[NoPages]"
+                      dataType="i4"
+                      name="NoPages" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[publisher_id]"
+                      dataType="i4"
+                      name="publisher_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input].ExternalColumns[Publisher_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Publisher_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Book dimension destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Book dimension destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book dimension destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Book dimension destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Book Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Book Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+    b.book_id AS BookKey,
+    b.title AS Title,
+    b.isbn13 AS ISBN,
+    l.language_id,
+    l.language_code  ,
+    l.language_name AS Language,
+    b.num_pages AS NumPages,
+    p.publisher_id,
+    b.publication_date AS PublicationDate,
+    p.publisher_name AS Publisher
+
+FROM dbo.book b
+LEFT JOIN dbo.book_language l ON b.language_id = l.language_id
+LEFT JOIN dbo.publisher p ON b.publisher_id = p.publisher_id</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Book Source.Connections[OleDbConnection]"
+                  connectionManagerID="{515C676F-300D-429D-9511-E7EE98B9A056}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.gravity_books]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[BookKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[BookKey]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[BookKey]"
+                      name="BookKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Title]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      length="400"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[ISBN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[ISBN]"
+                      length="13"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[ISBN]"
+                      name="ISBN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[language_id]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_id]"
+                      name="language_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[language_code]"
+                      length="8"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_code]"
+                      name="language_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Language]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[Language]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Language]"
+                      name="Language"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[NumPages]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[NumPages]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[NumPages]"
+                      name="NumPages"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[publisher_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[publisher_id]"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[publisher_id]"
+                      name="publisher_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[PublicationDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[PublicationDate]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[PublicationDate]"
+                      name="PublicationDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Publisher]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[Publisher]"
+                      length="1000"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Publisher]"
+                      name="Publisher"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[BookKey]"
+                      dataType="i4"
+                      name="BookKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[ISBN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      name="ISBN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[language_id]"
+                      dataType="i4"
+                      name="language_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[language_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      name="language_code" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[Language]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Language" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[NumPages]"
+                      dataType="i4"
+                      name="NumPages" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[publisher_id]"
+                      dataType="i4"
+                      name="publisher_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[PublicationDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="PublicationDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].ExternalColumns[Publisher]"
+                      dataType="wstr"
+                      length="1000"
+                      name="Publisher" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[BookKey]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[BookKey]"
+                      name="BookKey" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="400"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[ISBN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="13"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[ISBN]"
+                      name="ISBN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[language_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[language_id]"
+                      name="language_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[language_code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="8"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[language_code]"
+                      name="language_code" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[Language]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[Language]"
+                      name="Language" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[NumPages]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[NumPages]"
+                      name="NumPages" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[publisher_id]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[publisher_id]"
+                      name="publisher_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[PublicationDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[PublicationDate]"
+                      name="PublicationDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[Publisher]"
+                      dataType="wstr"
+                      length="1000"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[Publisher]"
+                      name="Publisher" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\BookID,LanguageID TO BKs"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="BookID,LanguageID TO BKs"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[Book]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[Book]) [refTable]
+where [refTable].[Book_id_Bk] = ? and [refTable].[language_id_Bk] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Book_id_sk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Book_id_Bk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="title" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ISBN13" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="language_id_Bk" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="language_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="language_code" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="publication_date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="NoPages" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="publisher_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Publisher_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[BookKey]};#{Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Connections[OleDbConnection]"
+                  connectionManagerID="{F977A13C-C88D-43A4-8219-9534411D3F31}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.data_warehouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Inputs[Lookup Input].Columns[BookKey]"
+                      cachedDataType="i4"
+                      cachedName="BookKey"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[BookKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Book_id_Bk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Inputs[Lookup Input].Columns[language_id]"
+                      cachedDataType="i4"
+                      cachedName="language_id"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">language_id_Bk</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\BookID,LanguageID TO BKs.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\BookID,LanguageID TO BKs.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\BookID,LanguageID TO BKs.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\BookID,LanguageID TO BKs.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\BookID,LanguageID TO BKs.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\BookID,LanguageID TO BKs.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Title,Lang,Lang_code,ISBN Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Inputs[Data Conversion Input].Columns[Title]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="400"
+                      cachedName="Title"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Inputs[Data Conversion Input].Columns[Language]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Language"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Language]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Inputs[Data Conversion Input].Columns[language_code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="8"
+                      cachedName="language_code"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_code]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Inputs[Data Conversion Input].Columns[ISBN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="13"
+                      cachedName="ISBN"
+                      lineageId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[ISBN]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="400"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of Title]"
+                      name="Copy of Title"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Title]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of Language]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of Language]"
+                      name="Copy of Language"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[Language]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of ISBN]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="13"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of ISBN]"
+                      name="Copy of ISBN"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[ISBN]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of language_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="8"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output].Columns[Copy of language_code]"
+                      name="Copy of language_code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output].Columns[language_code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\BookID,LanguageID TO BKs.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup No Match Output]"
+              endId="Package\Data Flow Task\Book dimension destination.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\Data Flow Task\BookID,LanguageID TO BKs.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Book Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="262.499985657633,108.333332579997" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="211.2,41.6"
+          Id="Package\Data Flow Task\BookID,LanguageID TO BKs"
+          TopLeft="376.666646086508,285.999998011192" />
+        <NodeLayout
+          Size="260.8,41.6"
+          Id="Package\Data Flow Task\Title,Lang,Lang_code,ISBN Conversion"
+          TopLeft="62.499996585151,201.933331929114" />
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Data Flow Task\Book dimension destination"
+          TopLeft="388.333312115736,52.8666662990386" />
+        <NodeLayout
+          Size="137.6,41.6"
+          Id="Package\Data Flow Task\Book Source"
+          TopLeft="74.1666626143788,29.4666664617591" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="142.966662614379,71.0666664617591">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.9333339707723,130.866665467355"
+              Start="0,0"
+              End="49.9333339707723,123.366665467355">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.4333327336775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.4333327336775"
+                    Point2="0,65.4333327336775"
+                    Point3="4,65.4333327336775" />
+                  <mssgle:LineSegment
+                    End="45.9333339707723,65.4333327336775" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.9333339707723,65.4333327336775"
+                    Point2="49.9333339707723,65.4333327336775"
+                    Point3="49.9333339707723,69.4333327336775" />
+                  <mssgle:LineSegment
+                    End="49.9333339707723,123.366665467355" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup No Match Output]"
+          TopLeft="516.133312753175,285.999998011192">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-25.0000006374386,-191.533331712153"
+              Start="0,0"
+              End="-25.0000006374386,-184.033331712153">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-73.4773928279238" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-73.4773928279238"
+                    Point2="0,-77.4773928279238"
+                    Point3="-4,-77.4773928279238" />
+                  <mssgle:LineSegment
+                    End="-21.0000006374386,-77.4773928279238" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-21.0000006374386,-77.4773928279238"
+                    Point2="-25.0000006374386,-77.4773928279238"
+                    Point3="-25.0000006374386,-81.4773928279238" />
+                  <mssgle:LineSegment
+                    End="-25.0000006374386,-184.033331712153" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-68.3063870374693,-72.4773928279238,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="192.899996585151,243.533331929114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="255.49998283469,42.4666660820778"
+              Start="0,0"
+              End="255.49998283469,34.9666660820778">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.2884207045155" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.2884207045155"
+                    Point2="0,25.2884207045155"
+                    Point3="4,25.2884207045155" />
+                  <mssgle:LineSegment
+                    End="251.49998283469,25.2884207045155" />
+                  <mssgle:CubicBezierSegment
+                    Point1="251.49998283469,25.2884207045155"
+                    Point2="255.49998283469,25.2884207045155"
+                    Point3="255.49998283469,29.2884207045155" />
+                  <mssgle:LineSegment
+                    End="255.49998283469,34.9666660820778" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\BookID,LanguageID TO BKs">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Book]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Book dimension destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Book Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
